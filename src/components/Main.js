@@ -37,14 +37,14 @@ function Main(props) {
             onClick={props.onEditProfile}
             className="profile__button-edit"
             type="button"
-          ></button>
+          />
           <h3 className="profile__subtitle">{userDescription}</h3>
         </div>
         <button
           onClick={props.onAddPlace}
           className="profile__button-add"
           type="button"
-        ></button>
+        />
       </section>
       <section className="elements">
         <ul className="elements__list">
