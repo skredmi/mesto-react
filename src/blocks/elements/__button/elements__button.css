@@ -15,6 +15,7 @@
     background-color: transparent;
     padding: 0;
     transition: opacity 0.3s linear;
+    display: none;
 }
 
 .elements__button:hover {
