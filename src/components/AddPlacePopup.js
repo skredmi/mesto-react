@@ -5,24 +5,12 @@ function AddPlacePopup(props) {
   const { isOpen, onClose, onAddPlace, isLoading } = props;
   const [name, setName] = React.useState("");
   const [link, setLink] = React.useState("");
-  // const [isValid, setIsValid] = React.useState({name:false, link:false});
-  // const [validationMessage, setValidationMessage] = React.useState("");
-  // const [inputValue, setInputValue] = React.useState({name:"", link:""})
+
 
   React.useEffect(() => {
     setName("");
     setLink("");
   }, [onClose]);
-
-  // function inputValidate (evt) {
-  //   if (evt.target.validity.valid) {
-  //     setIsValid(false);
-  //     setValidationMessage(evt.target.validationMessage);
-  //   } else {
-  //     setIsValid(true);
-  //     setValidationMessage("");
-  //   }
-  // }
 
   function handleNameChange(evt) {
     setName(evt.target.value);
@@ -39,23 +27,6 @@ function AddPlacePopup(props) {
       link
     });
   }
-
-  // function handleInputChange (evt) {
-  //   const {name, value} = evt.target;
-
-  //   setInputValue({
-  //     ...inputValue,
-  //     [name]: value,
-  //   });
-  //   setIsValid({
-  //     ...isValid,
-  //     [name]: evt.target.validity.valid,
-  //   });
-  //   setValidationMessage({
-  //     ...validationMessage,
-  //     [name]: evt.target.validationMessag,
-  //   });
-  // }
 
   return (
     <PopupWithForm
@@ -94,11 +65,7 @@ function AddPlacePopup(props) {
             value={link}
             onChange={handleLinkChange}
           />
-          <span
-            className="popup__input-error"
-            id="link-input-error"
-          >
-          </span>
+          <span className="popup__input-error" id="link-input-error"></span>
         </label>
       </div>
     </PopupWithForm>
