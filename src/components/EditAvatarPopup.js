@@ -1,8 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import PopupWithForm from "./PopupWithForm";
 
-function EditAvatarPopup(props) {
-  const { isOpen, onClose, onUpdateAvatar, isLoading} = props;
+function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading }) {
   const avatarRef = React.useRef();
 
   React.useEffect(() => {
@@ -43,5 +43,12 @@ function EditAvatarPopup(props) {
     </PopupWithForm>
   );
 }
+
+EditAvatarPopup.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onUpdateAvatar: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+};
 
 export default EditAvatarPopup;

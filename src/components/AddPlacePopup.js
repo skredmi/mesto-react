@@ -1,11 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import PopupWithForm from "./PopupWithForm";
 
-function AddPlacePopup(props) {
-  const { isOpen, onClose, onAddPlace, isLoading } = props;
+function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
   const [name, setName] = React.useState("");
   const [link, setLink] = React.useState("");
-
 
   React.useEffect(() => {
     setName("");
@@ -24,7 +23,7 @@ function AddPlacePopup(props) {
     evt.preventDefault();
     onAddPlace({
       name,
-      link
+      link,
     });
   }
 
@@ -71,5 +70,12 @@ function AddPlacePopup(props) {
     </PopupWithForm>
   );
 }
+
+AddPlacePopup.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onAddPlace: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+};
 
 export default AddPlacePopup;

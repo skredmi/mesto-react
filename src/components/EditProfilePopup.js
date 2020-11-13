@@ -1,9 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import PopupWithForm from "./PopupWithForm";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 
-function EditProfilePopup(props) {
-  const { isOpen, onClose, onUpdateUser, isLoading } = props;
+function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading }) {
   const currentUser = React.useContext(CurrentUserContext);
   const [name, setName] = React.useState("");
   const [description, setDescription] = React.useState("");
@@ -72,5 +72,12 @@ function EditProfilePopup(props) {
     </PopupWithForm>
   );
 }
+
+EditProfilePopup.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onUpdateUser: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+};
 
 export default EditProfilePopup;

@@ -1,18 +1,19 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Card from "./Card";
 import { CurrentUserContext } from "../context/CurrentUserContext";
+import { CardType } from "../utils/types";
 
-function Main(props) {
+function Main({
+  cards,
+  onEditAvatar,
+  onEditProfile,
+  onAddPlace,
+  onCardClick,
+  onCardLike,
+  onCardDelete,
+}) {
   const currentUser = React.useContext(CurrentUserContext);
-  const {
-    cards,
-    onEditAvatar,
-    onEditProfile,
-    onAddPlace,
-    onCardClick,
-    onCardLike,
-    onCardDelete,
-  } = props;
 
   return (
     <main className="content">
@@ -55,5 +56,15 @@ function Main(props) {
     </main>
   );
 }
+
+Main.propTypes = {
+  cards: PropTypes.arrayOf(CardType),
+  onEditAvatar: PropTypes.func.isRequired,
+  onEditProfile: PropTypes.func.isRequired,
+  onAddPlace: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
+  onCardLike: PropTypes.func.isRequired,
+  onCardDelete: PropTypes.func.isRequired,
+};
 
 export default Main;

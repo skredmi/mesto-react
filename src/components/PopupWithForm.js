@@ -1,17 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-function PopupWithForm(props) {
-  const {
-    name,
-    isOpen,
-    onClose,
-    title,
-    children,
-    button,
-    onSubmit,
-    isLoading,
-    isValid,
-  } = props;
+function PopupWithForm({
+  name,
+  isOpen,
+  onClose,
+  title,
+  children,
+  button,
+  onSubmit,
+  isLoading,
+  isValid,
+}) {
   return (
     <section className={`popup popup_${name} ${isOpen && "popup_opened"}`}>
       <form className="popup__container" onSubmit={onSubmit} noValidate>
@@ -29,5 +29,17 @@ function PopupWithForm(props) {
     </section>
   );
 }
+
+PopupWithForm.propTypes = {
+  name: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.object,
+  button: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+  isValid: PropTypes.bool,
+};
 
 export default PopupWithForm;

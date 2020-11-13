@@ -1,22 +1,25 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { CurrentUserContext } from "../context/CurrentUserContext";
+import { CardType } from "../utils/types";
 
-function Card(props) {
+function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = React.useContext(CurrentUserContext);
-  const { card, onCardClick, onCardLike, onCardDelete } = props;
   const isOwn = card.owner._id === currentUser._id;
   const cardDeleteButtonClassName = `elements__button ${
-    isOwn && "elements__button_visible"}`;
+    isOwn && "elements__button_visible"
+  }`;
   const isLiked = card.likes.some((i) => i._id === currentUser._id);
   const cardLikeButtonClassName = `elements__like-button ${
-    isLiked && "elements__like-button_active"}`;
+    isLiked && "elements__like-button_active"
+  }`;
 
   function handleClick() {
     onCardClick(card);
   }
 
   function handleLikeClick() {
-     onCardLike(card);
+    onCardLike(card);
   }
 
   function handleDeleteClick() {
@@ -52,5 +55,12 @@ function Card(props) {
     </div>
   );
 }
+
+Card.propTypes = {
+  card: CardType,
+  onCardClick: PropTypes.func.isRequired,
+  onCardLike: PropTypes.func.isRequired,
+  onCardDelete: PropTypes.func.isRequired,
+};
 
 export default Card;

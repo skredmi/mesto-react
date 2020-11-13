@@ -1,19 +1,19 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { CardType } from "../utils/types";
 
-function ImagePopup(props) {
+function ImagePopup({ card, onClose }) {
   return (
-    <section className={`popup popup-photo ${props.card && "popup_opened"}`}>
+    <section className={`popup popup-photo ${card && "popup_opened"}`}>
       <div className="popup-photo__container">
         <img
-          src={props.card ? props.card.link : ""}
-          alt={props.card ? props.card.name : ""}
+          src={card ? card.link : ""}
+          alt={card ? card.name : ""}
           className="popup-photo__place"
         />
-        <p className="popup-photo__title">
-          {props.card ? props.card.name : ""}
-        </p>
+        <p className="popup-photo__title">{card ? card.name : ""}</p>
         <button
-          onClick={props.onClose}
+          onClick={onClose}
           className="popup__button-close"
           type="button"
         />
@@ -21,5 +21,10 @@ function ImagePopup(props) {
     </section>
   );
 }
+
+ImagePopup.propTypes = {
+  card: CardType,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default ImagePopup;

@@ -50,17 +50,16 @@ function App() {
     setSelectedCard();
   }
 
-  const loadUserAndCards = async() => {
+  const loadUserAndCards = async () => {
     try {
       const user = await api.getUserProfile();
       const cards = await api.getInitialCards();
       setCurrentUser(user);
       setCards(cards);
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   React.useEffect(() => {
     loadUserAndCards();
@@ -105,7 +104,7 @@ function App() {
       })
       .finally(() => {
         setIsLoading(false);
-      })
+      });
   }
 
   function handleUpdateAvatar({ avatar }) {
@@ -121,7 +120,7 @@ function App() {
       })
       .finally(() => {
         setIsLoading(false);
-      })
+      });
   }
 
   function handleAddPlaceSubmit({ name, link }) {
@@ -137,21 +136,28 @@ function App() {
       })
       .finally(() => {
         setIsLoading(false);
-      })
+      });
   }
 
-  React.useEffect(() =>{
+  React.useEffect(() => {
     const handleClosePopupEsc = (evt) => {
-    const ESC = 27;
-    if (evt.keyCode === ESC) {
-      closeAllPopups();
-    }
-  }
+      const ESC = 27;
+      if (evt.keyCode === ESC) {
+        closeAllPopups();
+      }
+    };
     document.addEventListener("keydown", handleClosePopupEsc);
+    const handleClosePopupOverlay = (evt) => {
+      if (evt.target.classList.contains("popup_opened")) {
+        closeAllPopups();
+      }
+    };
+    document.addEventListener("click", handleClosePopupOverlay);
     return () => {
       document.removeEventListener("keydown", handleClosePopupEsc);
+      document.addEventListener("click", handleClosePopupOverlay);
     };
-  }, [])
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
