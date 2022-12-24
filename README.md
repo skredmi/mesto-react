@@ -27,6 +27,8 @@
 
 [Ссылка на проект](https://skredmi.github.io/mesto-react)
 
+![mesto](https://user-images.githubusercontent.com/63904240/209444796-cf16515c-2b1b-4773-8cad-a60e872d2102.JPG)
+
 ***
 Available Scripts
 In the project directory, you can run:
